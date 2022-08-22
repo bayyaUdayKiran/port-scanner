@@ -18,6 +18,7 @@ def scan_range(ip, port_alpha, port_omega):
     buffer = list()
     for port in range(port_alpha, port_omega):
         sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        sock.settimeout(0.5)
         if sock.connect_ex((ip, port)) == 0:
             buffer.append(port)
             sock.close()
